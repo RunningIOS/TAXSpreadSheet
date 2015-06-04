@@ -10,8 +10,11 @@
 #import "TAXSpreadSheetLayout.h"
 
 @interface TAXSpreadSheet () <UICollectionViewDataSource, TAXSpreadSheetLayoutDataSource, TAXSpreadSheetLayoutDelegate>
+
 @property (nonatomic) UICollectionView *collectionView;
 @property (nonatomic, strong) TAXSpreadSheetLayout *layout;
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPress;
+
 @end
 
 @implementation TAXSpreadSheet
@@ -70,9 +73,23 @@ const CGFloat defaultSpacing = 0.0;
     [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:TAXSpreadSheetLayoutInterRowView withReuseIdentifier:EmptyViewIdentifier];
 
     self.collectionView = collectionView;
+    self.longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction:)];
+    [self.collectionView addGestureRecognizer:self.longPress];
     
     [self addSubview:collectionView];
 }
+
+- (void)longPressAction:(UILongPressGestureRecognizer *)sender{
+    if (sender.state != UIGestureRecognizerStateEnded) {
+        return;
+    }
+    CGPoint point = [sender locationInView:self.collectionView];
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
+    if ([self.delegate respondsToSelector:@selector(spreadSheet:longPressItemAtRow:column:)]) {
+        [self.delegate spreadSheet:self longPressItemAtRow:indexPath.section column:indexPath.item];
+    }
+}
+
 
 - (NSArray *)p_indexPathsOfColumns:(NSIndexSet *)columns
 {

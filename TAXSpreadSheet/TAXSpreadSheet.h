@@ -28,6 +28,7 @@
 
 - (CGFloat)spreadSheet:(TAXSpreadSheet *)spreadSheet bottomSpacingBelowRow:(NSUInteger)row;
 - (CGFloat)spreadSheet:(TAXSpreadSheet *)spreadSheet trailingSpacingAfterColumn:(NSUInteger)column;
+- (void)spreadSheet:(TAXSpreadSheet *)spreadSheet longPressItemAtRow:(NSUInteger)row column:(NSUInteger)column;
 
 - (UICollectionReusableView *)spreadSheet:(TAXSpreadSheet *)spreadSheet interRowViewBelowRow:(NSUInteger)row;
 - (UICollectionReusableView *)spreadSheet:(TAXSpreadSheet *)spreadSheet interColumnViewAfterColumn:(NSUInteger)column;

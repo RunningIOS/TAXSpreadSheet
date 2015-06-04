@@ -74,6 +74,10 @@ static NSString * const CellIdentifier = @"Cell";
     } else return NSNotFound;
 }
 
+- (void)spreadSheet:(TAXSpreadSheet *)spreadSheet longPressItemAtRow:(NSUInteger)row column:(NSUInteger)column{
+    NSLog(@"long press item at row:%@, column:%@", @(row), @(column));
+}
+
 # pragma mark - Handler
 
 - (IBAction)insertRowDidTap:(id)sender
