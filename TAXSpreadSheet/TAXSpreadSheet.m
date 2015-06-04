@@ -141,10 +141,12 @@ const CGFloat defaultSpacing = 0.0;
     self.collectionView.showsVerticalScrollIndicator = showsVerticalScrollIndicator;
 }
 
-- (void)setContentOffset:(CGPoint)contentOffset
-{
-    _contentOffset = contentOffset;
+- (void)setContentOffset:(CGPoint)contentOffset{
     self.collectionView.contentOffset = contentOffset;
+}
+
+- (CGPoint)contentOffset{
+    return self.collectionView.contentOffset;
 }
 
 - (void)setCellSize:(CGSize)cellSize
