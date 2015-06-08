@@ -44,6 +44,8 @@
 @property (nonatomic, assign) BOOL showsHorizontalScrollIndicator, showsVerticalScrollIndicator;
 @property (nonatomic, assign) CGPoint contentOffset;
 
+@property (nonatomic, assign, readonly) CGSize contentSize;
+
 // default YES
 @property (nonatomic, assign) BOOL bounces;
 

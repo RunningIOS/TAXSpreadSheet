@@ -81,7 +81,6 @@ const CGFloat defaultSpacing = 0.0;
 }
 
 - (void)longPressAction:(UILongPressGestureRecognizer *)sender{
-    NSLog(@"%@", sender);
     if (sender.state == UIGestureRecognizerStateBegan) {
         CGPoint point = [sender locationInView:self.collectionView];
         NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
@@ -148,6 +147,10 @@ const CGFloat defaultSpacing = 0.0;
 
 - (CGPoint)contentOffset{
     return self.collectionView.contentOffset;
+}
+
+- (CGSize)contentSize{
+    return self.collectionView.contentSize;
 }
 
 - (void)setCellSize:(CGSize)cellSize
